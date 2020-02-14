@@ -9,7 +9,7 @@ target/
 ### Intellij IDEA ###
 .idea/
 *.iml
-*ipl
+*.ipl
 
 ### Mac os System ### 
 .DS_Store
