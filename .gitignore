@@ -6,5 +6,10 @@ target/
 .classpath
 .project
 
+### Intellij IDEA ###
+.idea/
+*.iml
+*ipl
+
 ### Mac os System ### 
 .DS_Store
