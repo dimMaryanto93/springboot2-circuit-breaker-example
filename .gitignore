@@ -1,0 +1,10 @@
+### maven project ###
+target/
+
+### eclipse project ###
+.settings/
+.classpath
+.project
+
+### Mac os System ### 
+.DS_Store
