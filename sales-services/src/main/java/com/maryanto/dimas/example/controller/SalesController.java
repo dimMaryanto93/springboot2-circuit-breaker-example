@@ -1,14 +1,12 @@
 package com.maryanto.dimas.example.controller;
 
 import com.maryanto.dimas.example.entity.Sales;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Predicate;
 
 @RestController
 @RequestMapping("/sales")
@@ -28,5 +26,12 @@ public class SalesController {
     @GetMapping("/list")
     public List<Sales> findAll() {
         return list;
+    }
+
+    @PostMapping("/{id}/findById")
+    public ResponseEntity<Sales> findById(@PathVariable("id") String id, @RequestParam("nip") String nip) {
+        Predicate<Sales> predicate = data -> StringUtils.endsWithIgnoreCase(data.getNip(), id);
+        Optional<Sales> sales = list.stream().filter(predicate).findFirst();
+        return sales.isPresent() ? ResponseEntity.ok(sales.get()) : ResponseEntity.noContent().build();
     }
 }
