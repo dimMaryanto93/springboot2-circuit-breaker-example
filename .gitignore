@@ -13,3 +13,7 @@ target/
 
 ### Mac os System ### 
 .DS_Store
+
+### Logging file ###
+*.log
+*.log.*
